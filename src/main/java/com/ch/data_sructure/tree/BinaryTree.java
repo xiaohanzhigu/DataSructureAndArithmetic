@@ -9,10 +9,10 @@ public class BinaryTree<T> {
     public static void main(String[] args) {
         BinaryTree<Person> binaryTree = new BinaryTree<>();
         List<Person> list = TestUtil.getPersonList();
-        Node<Person> pn1 = new Node<>(1, list.get(0));
-        Node<Person> pn2 = new Node<>(2, list.get(1));
-        Node<Person> pn3 = new Node<>(3, list.get(2));
-        Node<Person> pn4 = new Node<>(4, list.get(3));
+        ArrayBinaryNode<Person> pn1 = new ArrayBinaryNode<>(1, list.get(0));
+        ArrayBinaryNode<Person> pn2 = new ArrayBinaryNode<>(2, list.get(1));
+        ArrayBinaryNode<Person> pn3 = new ArrayBinaryNode<>(3, list.get(2));
+        ArrayBinaryNode<Person> pn4 = new ArrayBinaryNode<>(4, list.get(3));
 
         binaryTree.setRoot(pn1);
         pn1.setLeft(pn2);
@@ -25,10 +25,10 @@ public class BinaryTree<T> {
         binaryTree.preOrder();
     }
 
-    private Node<T> root;
+    private ArrayBinaryNode<T> root;
 
     public T remove(int index) {
-        Node<T> node = null;
+        ArrayBinaryNode<T> node = null;
         if (root != null) {
             if (root.getNo() == index) {
                 node = root;
@@ -42,7 +42,7 @@ public class BinaryTree<T> {
 
     public T preOrderSearch(int index) {
         if (root != null) {
-            Node<T> node = root.preOrderSearch(index);
+            ArrayBinaryNode<T> node = root.preOrderSearch(index);
             if (node != null) {
                 return node.getValue();
             }
@@ -52,7 +52,7 @@ public class BinaryTree<T> {
 
     public T infixOrderSearch(int index) {
         if (root != null) {
-            Node<T> node = root.infixOrderSearch(index);
+            ArrayBinaryNode<T> node = root.infixOrderSearch(index);
             if (node != null) {
                 return node.getValue();
             }
@@ -62,7 +62,7 @@ public class BinaryTree<T> {
 
     public T postOrderSearch(int index) {
         if (root != null) {
-            Node<T> node = root.postOrderSearch(index);
+            ArrayBinaryNode<T> node = root.postOrderSearch(index);
             if (node != null) {
                 return node.getValue();
             }
@@ -88,20 +88,20 @@ public class BinaryTree<T> {
         }
     }
 
-    public void setRoot(Node<T> root) {
+    public void setRoot(ArrayBinaryNode<T> root) {
         this.root = root;
     }
 }
 
-class Node<T> {
+class ArrayBinaryNode<T> {
     private int no;
     private T value;
-    private Node<T> root;
-    private Node<T> left;
-    private Node<T> right;
+    private ArrayBinaryNode<T> root;
+    private ArrayBinaryNode<T> left;
+    private ArrayBinaryNode<T> right;
 
-    public Node<T> removeNode(int index) {
-        Node<T> node = null;
+    public ArrayBinaryNode<T> removeNode(int index) {
+        ArrayBinaryNode<T> node = null;
         if (this.left != null && this.left.getNo() == index) {
             node = this.left;
             this.left = null;
@@ -121,11 +121,11 @@ class Node<T> {
         return null;
     }
 
-    public Node<T> preOrderSearch(int index) {
+    public ArrayBinaryNode<T> preOrderSearch(int index) {
         if (this.no == index) {
             return this;
         }
-        Node<T> result = null;
+        ArrayBinaryNode<T> result = null;
         if (this.left != null) {
             result = this.left.preOrderSearch(index);
         }
@@ -138,8 +138,8 @@ class Node<T> {
         return result;
     }
 
-    public Node<T> infixOrderSearch(int index) {
-        Node<T> result = null;
+    public ArrayBinaryNode<T> infixOrderSearch(int index) {
+        ArrayBinaryNode<T> result = null;
         if (this.left != null) {
             result = this.left.infixOrderSearch(index);
         }
@@ -155,8 +155,8 @@ class Node<T> {
         return  result;
     }
 
-    public Node<T> postOrderSearch(int index) {
-        Node<T> result = null;
+    public ArrayBinaryNode<T> postOrderSearch(int index) {
+        ArrayBinaryNode<T> result = null;
         if (this.left != null) {
             result = this.left.postOrderSearch(index);
         }
@@ -205,11 +205,11 @@ class Node<T> {
         System.out.println(this.no + " " +this.value);
     }
 
-    public Node() {
+    public ArrayBinaryNode() {
 
     }
 
-    public Node(int no, T value) {
+    public ArrayBinaryNode(int no, T value) {
         this.no = no;
         this.value = value;
     }
@@ -222,15 +222,15 @@ class Node<T> {
         return value;
     }
 
-    public Node<T> getRoot() {
+    public ArrayBinaryNode<T> getRoot() {
         return root;
     }
 
-    public Node<T> getLeft() {
+    public ArrayBinaryNode<T> getLeft() {
         return left;
     }
 
-    public Node<T> getRight() {
+    public ArrayBinaryNode<T> getRight() {
         return right;
     }
 
@@ -242,15 +242,15 @@ class Node<T> {
         this.value = value;
     }
 
-    public void setRoot(Node<T> root) {
+    public void setRoot(ArrayBinaryNode<T> root) {
         this.root = root;
     }
 
-    public void setLeft(Node<T> left) {
+    public void setLeft(ArrayBinaryNode<T> left) {
         this.left = left;
     }
 
-    public void setRight(Node<T> right) {
+    public void setRight(ArrayBinaryNode<T> right) {
         this.right = right;
     }
 }

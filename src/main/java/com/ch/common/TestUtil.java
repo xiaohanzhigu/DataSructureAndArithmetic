@@ -17,6 +17,8 @@ public class TestUtil {
         list.add(new Person("smith", "男", 30));
         list.add(new Person("李华", "男", 19));
         list.add(new Person("王辉", "男", 42));
+        list.add(new Person("大力", "男", 15));
+        list.add(new Person("方圆", "男", 18));
         return list;
     }
 

@@ -9,7 +9,7 @@ public abstract class SortTemplate {
         Runtime r = Runtime.getRuntime();
         r.gc();
 
-        int dataSize = 60000000;
+        int dataSize = 10000000;
         int[] arr = TestUtil.randomIntArray(dataSize, dataSize);
 
         long startTime = System.currentTimeMillis(); //开始时间
@@ -28,12 +28,16 @@ public abstract class SortTemplate {
         System.out.println(name + " " + dataSize + "条数据用时: " + millisecond + "毫秒, " + second + "秒 内存消耗: " + memCountK + "KB, " + memCountM + "MB");
     }
 
-    public void testSort() {
-        int[] ints = TestUtil.randomNumArr();
-        //int[] ints = new int[]{8,9,1,7,2,3,5,4,6,0};
-        System.out.println("排序前的数组: " + Arrays.toString(ints));
-        sort(ints);
-        System.out.println("排序后的数组: " + Arrays.toString(ints));
+    public void testSort(int... arr) {
+        System.out.println("排序前的数组: " + Arrays.toString(arr));
+        sort(arr);
+        System.out.println("排序后的数组: " + Arrays.toString(arr));
     }
+
+    public void testSort(){
+        testSort(TestUtil.randomNumArr());
+    }
+
+
     public abstract void sort(int[] arr);
 }
